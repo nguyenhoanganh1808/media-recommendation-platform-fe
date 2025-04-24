@@ -30,7 +30,7 @@ import type { AppDispatch } from "@/lib/store";
 interface ListItemCardProps {
   item: ListItem;
   isDragging?: boolean;
-  dragHandleProps?: any;
+  dragHandleProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 export function ListItemCard({
@@ -103,7 +103,9 @@ export function ListItemCard({
               </div>
             </Link>
             <Badge
-              className={`absolute top-2 right-2 ${getTypeColor(item.media.mediaType || "")}`}
+              className={`absolute top-2 right-2 ${getTypeColor(
+                item.media.mediaType || ""
+              )}`}
             >
               {item.media.mediaType}
             </Badge>
@@ -135,7 +137,7 @@ export function ListItemCard({
               </div>
 
               <div className="flex items-center">
-                <div {...dragHandleProps} className="cursor-grab mr-2">
+                <div {...(dragHandleProps || {})} className="cursor-grab mr-2">
                   <GripVertical className="h-5 w-5 text-muted-foreground" />
                 </div>
                 <DropdownMenu>

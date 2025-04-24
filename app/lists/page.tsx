@@ -81,7 +81,7 @@ export default function ListsPage() {
       ) : lists.length === 0 ? (
         <div className="text-center py-12">
           <h2 className="text-xl font-semibold mb-2">
-            You don't have any lists yet
+            You don&apos;t have any lists yet
           </h2>
           <p className="text-muted-foreground mb-6">
             Create your first list to start organizing your media

@@ -39,7 +39,7 @@ interface SortableListItemProps {
 export function SortableListItem({ item }: SortableListItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [notes, setNotes] = useState(item.notes || "");
-  const [isDeleting, setIsDeleting] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -76,7 +76,7 @@ export function SortableListItem({ item }: SortableListItemProps) {
   const releaseYear = new Date(item.media.releaseDate).getFullYear();
 
   const handleDelete = async () => {
-    setIsDeleting(true);
+    // setIsDeleting(true);
     try {
       await dispatch(
         removeFromList({ listId: item.listId, itemId: item.id })
@@ -90,7 +90,7 @@ export function SortableListItem({ item }: SortableListItemProps) {
           error instanceof Error ? error.message : "Failed to remove item",
       });
     } finally {
-      setIsDeleting(false);
+      // setIsDeleting(false);
     }
   };
 
@@ -135,7 +135,9 @@ export function SortableListItem({ item }: SortableListItemProps) {
                 </div>
               </Link>
               <Badge
-                className={`absolute top-2 right-2 ${getTypeColor(item.media.mediaType || "")}`}
+                className={`absolute top-2 right-2 ${getTypeColor(
+                  item.media.mediaType || ""
+                )}`}
               >
                 {item.media.mediaType}
               </Badge>

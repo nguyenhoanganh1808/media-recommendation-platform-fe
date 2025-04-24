@@ -12,13 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/lib/store";
 import { AddToListModal } from "@/components/lists/add-to-list-modal";
 import { MediaItem } from "@/lib/features/media/mediaSlice";
-import {
-  fetchSimilar,
-  selectSimilarMedia,
-  selectSimilarStatus,
-} from "@/lib/features/recommendations/recommendationsSlice";
-import { MediaCarousel } from "@/components/media/media-carousel";
-import { StarRating } from "@/components/ratings/star-rating";
 import { MediaRatingReviews } from "@/components/ratings/media-rating-reviews";
 import { SimilarRecommendations } from "@/components/ratings/similar-recommendations";
 
@@ -32,8 +25,6 @@ export default function MediaDetailsPage() {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   const mediaId = params.id as string;
-  const similarMedia = useSelector(selectSimilarMedia(mediaId));
-  const similarStatus = useSelector(selectSimilarStatus(mediaId));
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -150,7 +141,9 @@ export default function MediaDetailsPage() {
               className="object-cover w-full h-full"
             />
             <Badge
-              className={`absolute top-4 right-4 ${getTypeColor(media.mediaType || "ALL")}`}
+              className={`absolute top-4 right-4 ${getTypeColor(
+                media.mediaType || "ALL"
+              )}`}
             >
               {media.mediaType}
             </Badge>

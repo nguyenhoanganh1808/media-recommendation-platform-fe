@@ -11,7 +11,6 @@ import {
   selectPersonalizedStatus,
   selectTrendingStatus,
   selectRecommendationsError,
-  selectRecommendationsPagination,
   type RecommendationsParams,
 } from "@/lib/features/recommendations/recommendationsSlice";
 import type { MediaType } from "@/lib/features/media/mediaSlice";
@@ -19,7 +18,6 @@ import type { RootState, AppDispatch } from "@/lib/store";
 import { MediaCarousel } from "@/components/media/media-carousel";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Pagination } from "@/components/lists/pagination";
 import { Settings } from "lucide-react";
 import Link from "next/link";
 
@@ -32,7 +30,6 @@ export default function RecommendationsPage() {
   const personalizedStatus = useSelector(selectPersonalizedStatus);
   const trendingStatus = useSelector(selectTrendingStatus);
   const error = useSelector(selectRecommendationsError);
-  const pagination = useSelector(selectRecommendationsPagination);
 
   const [activeTab, setActiveTab] = useState<string>("all");
   const [params, setParams] = useState<RecommendationsParams>({
@@ -67,14 +64,6 @@ export default function RecommendationsPage() {
       dispatch(fetchTrending(currentParams));
     }
   }, [dispatch, isAuthenticated, activeTab, params]);
-
-  const handlePageChange = (page: number) => {
-    setParams((prev) => ({ ...prev, page }));
-  };
-
-  const handleLimitChange = (limit: number) => {
-    setParams((prev) => ({ ...prev, limit, page: 1 }));
-  };
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);

@@ -9,7 +9,7 @@ const STORAGE_KEYS = {
 export const saveAuthToStorage = (
   accessToken: string,
   refreshToken: string,
-  user: any
+  user: unknown
 ) => {
   try {
     localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
@@ -74,7 +74,7 @@ export const updateRefreshTokenInStorage = (refreshToken: string) => {
 };
 
 // Update user data in localStorage
-export const updateUserInStorage = (user: any) => {
+export const updateUserInStorage = (user: unknown) => {
   try {
     localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
   } catch (error) {

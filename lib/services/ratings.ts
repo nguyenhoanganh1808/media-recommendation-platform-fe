@@ -1,6 +1,5 @@
 import axios from "axios";
 import type {
-  Rating,
   RatingResponse,
   Review,
   ReviewsParams,

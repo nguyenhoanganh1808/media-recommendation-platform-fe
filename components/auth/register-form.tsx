@@ -16,12 +16,12 @@ import { Loader2 } from "lucide-react";
 export function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+  let username;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

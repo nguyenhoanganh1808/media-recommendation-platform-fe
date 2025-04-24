@@ -9,7 +9,6 @@ import {
   saveUserPreferences,
   selectUserPreferences,
   selectPreferencesStatus,
-  selectRecommendationsError,
 } from "@/lib/features/recommendations/recommendationsSlice";
 import type { UserPreferences } from "@/lib/features/recommendations/recommendationsSlice";
 import type { RootState, AppDispatch } from "@/lib/store";
@@ -145,8 +144,8 @@ export default function PreferencesPage() {
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Favorite Genres</h3>
               <p className="text-sm text-muted-foreground">
-                Select the genres you're interested in. You can select multiple
-                genres.
+                Select the genres you&apos;re interested in. You can select
+                multiple genres.
               </p>
               {genresStatus === "loading" ? (
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">

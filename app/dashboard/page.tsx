@@ -81,7 +81,7 @@ export default function DashboardPage() {
             <CardDescription>Popular right now</CardDescription>
           </CardHeader>
           <CardContent>
-            <p>See what's popular across all users</p>
+            <p>See what&apos;s popular across all users</p>
           </CardContent>
           <CardFooter>
             <Button asChild>

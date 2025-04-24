@@ -152,7 +152,8 @@ export function AddToListModal({ media, trigger }: AddToListModalProps) {
         <DialogHeader>
           <DialogTitle>Add to List</DialogTitle>
           <DialogDescription>
-            Add "{media.title}" to one of your lists or create a new list.
+            Add &apos;{media.title}&apos; to one of your lists or create a new
+            list.
           </DialogDescription>
         </DialogHeader>
 
@@ -172,7 +173,7 @@ export function AddToListModal({ media, trigger }: AddToListModalProps) {
             ) : lists.length === 0 ? (
               <div className="text-center py-4">
                 <p className="text-muted-foreground">
-                  You don't have any lists yet.
+                  You don&apos;t have any lists yet.
                 </p>
                 <Button
                   variant="link"
