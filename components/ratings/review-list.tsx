@@ -4,14 +4,11 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getMediaReviews,
-  likeUserReview,
-  unlikeUserReview,
   selectMediaReviews,
   selectMediaReviewsStatus,
   selectReviewsPagination,
   type ReviewsParams,
 } from "@/lib/features/ratings/ratingsSlice";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -25,7 +22,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Pagination } from "@/components/lists/pagination";
-import { ThumbsUp, Star, AlertTriangle, Loader2 } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import type { AppDispatch } from "@/lib/store";
 
@@ -46,9 +43,9 @@ export function ReviewList({ mediaId, className }: ReviewListProps) {
   const [expandedReviews, setExpandedReviews] = useState<
     Record<string, boolean>
   >({});
-  const [likeInProgress, setLikeInProgress] = useState<Record<string, boolean>>(
-    {}
-  );
+  // const [likeInProgress, setLikeInProgress] = useState<Record<string, boolean>>(
+  //   {}
+  // );
 
   const dispatch = useDispatch<AppDispatch>();
   const reviews = useSelector(selectMediaReviews(mediaId));
@@ -95,28 +92,28 @@ export function ReviewList({ mediaId, className }: ReviewListProps) {
     }));
   };
 
-  const handleLikeToggle = async (reviewId: string, isLiked: boolean) => {
-    if (likeInProgress[reviewId]) return;
+  // const handleLikeToggle = async (reviewId: string, isLiked: boolean) => {
+  //   if (likeInProgress[reviewId]) return;
 
-    setLikeInProgress((prev) => ({ ...prev, [reviewId]: true }));
+  //   setLikeInProgress((prev) => ({ ...prev, [reviewId]: true }));
 
-    try {
-      if (isLiked) {
-        await dispatch(unlikeUserReview({ mediaId, reviewId })).unwrap();
-      } else {
-        await dispatch(likeUserReview({ mediaId, reviewId })).unwrap();
-      }
-    } catch (error) {
-      toast.error("Error", {
-        description:
-          error instanceof Error
-            ? error.message
-            : "Failed to update like status",
-      });
-    } finally {
-      setLikeInProgress((prev) => ({ ...prev, [reviewId]: false }));
-    }
-  };
+  //   try {
+  //     if (isLiked) {
+  //       await dispatch(unlikeUserReview({ mediaId, reviewId })).unwrap();
+  //     } else {
+  //       await dispatch(likeUserReview({ mediaId, reviewId })).unwrap();
+  //     }
+  //   } catch (error) {
+  //     toast.error("Error", {
+  //       description:
+  //         error instanceof Error
+  //           ? error.message
+  //           : "Failed to update like status",
+  //     });
+  //   } finally {
+  //     setLikeInProgress((prev) => ({ ...prev, [reviewId]: false }));
+  //   }
+  // };
 
   // Loading state
   if (status === "loading" && reviews.length === 0) {
@@ -266,7 +263,9 @@ export function ReviewList({ mediaId, className }: ReviewListProps) {
                   <div>
                     {new Date(review.createdAt).toLocaleDateString()}
                     {review.updatedAt !== review.createdAt &&
-                      ` (Updated: ${new Date(review.updatedAt).toLocaleDateString()})`}
+                      ` (Updated: ${new Date(
+                        review.updatedAt
+                      ).toLocaleDateString()})`}
                   </div>
 
                   {/* <Button

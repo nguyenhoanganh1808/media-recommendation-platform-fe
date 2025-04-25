@@ -30,11 +30,16 @@ export default function ProfilePage() {
       <Card className="max-w-2xl mx-auto">
         <CardHeader className="flex flex-row items-center gap-4">
           <Avatar className="h-16 w-16">
-            <AvatarImage src={user?.avatar || ""} alt={user?.name || "User"} />
-            <AvatarFallback>{user?.name?.charAt(0) || "U"}</AvatarFallback>
+            <AvatarImage
+              src={user?.avatar || ""}
+              alt={user?.firstName || "User"}
+            />
+            <AvatarFallback>{user?.firstName?.charAt(0) || "U"}</AvatarFallback>
           </Avatar>
           <div>
-            <CardTitle className="text-2xl">{user?.name || "User"}</CardTitle>
+            <CardTitle className="text-2xl">
+              {user?.firstName || "User"}
+            </CardTitle>
             <p className="text-muted-foreground">{user?.email}</p>
           </div>
           <Button

@@ -244,7 +244,7 @@ export function FilterBar() {
             <SheetHeader>
               <SheetTitle>Filters & Sort</SheetTitle>
               <SheetDescription>
-                Adjust filters to find the media you're looking for
+                Adjust filters to find the media you&apos;re looking for
               </SheetDescription>
             </SheetHeader>
             <div className="py-4 space-y-4">

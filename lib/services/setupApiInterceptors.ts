@@ -1,14 +1,23 @@
 // lib/services/setupApiInterceptors.ts
 import type { AxiosInstance } from "axios";
 import { getAuthFromStorage } from "@/lib/utils/storage";
+import { AppDispatch, RootState } from "../store";
+
+type AuthTokens = {
+  accessToken: string;
+  refreshToken: string;
+};
 
 export const setupApiInterceptors = (
   api: AxiosInstance,
-  getState: () => any,
-  dispatch: (action: any) => void,
-  refreshAuthToken: (token: string) => Promise<any>,
-  logoutAction: () => any,
-  refreshTokenAction: (tokens: any) => any
+  getState: () => RootState,
+  dispatch: AppDispatch,
+  refreshAuthToken: (token: string) => Promise<{ data: AuthTokens }>,
+  logoutAction: () => { type: string },
+  refreshTokenAction: (tokens: AuthTokens) => {
+    type: string;
+    payload: AuthTokens;
+  }
 ) => {
   // Request interceptor
   api.interceptors.request.use(

@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchMedia } from "@/lib/services/media";
-import { Rating } from "../ratings/ratingsSlice";
 
 export type MediaType = "MOVIE" | "GAME" | "MANGA" | null;
 export type SortOption =

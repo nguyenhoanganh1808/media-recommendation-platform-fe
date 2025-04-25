@@ -103,7 +103,7 @@ export const fetchFollowing = createAsyncThunk(
 
 export const followUser = createAsyncThunk(
   "users/followUser",
-  async (userId: string, { rejectWithValue, getState }) => {
+  async (userId: string, { rejectWithValue }) => {
     try {
       await followUserApi(userId);
       return userId;

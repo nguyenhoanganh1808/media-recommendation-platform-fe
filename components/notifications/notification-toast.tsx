@@ -26,7 +26,7 @@ export function NotificationToast() {
         });
       }
     }
-  }, [notifications, toast]);
+  }, [notifications]);
 
   // This component doesn't render anything
   return null;

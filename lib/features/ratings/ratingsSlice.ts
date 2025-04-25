@@ -386,9 +386,7 @@ const ratingsSlice = createSlice({
       })
 
       // Remove review
-      .addCase(removeUserReview.pending, (state) => {
-        // We don't need to update status here as it's handled by the component
-      })
+      .addCase(removeUserReview.pending, () => {})
       .addCase(removeUserReview.fulfilled, (state, action) => {
         const { mediaId, reviewId } = action.payload;
         state.userReviews[mediaId] = null;

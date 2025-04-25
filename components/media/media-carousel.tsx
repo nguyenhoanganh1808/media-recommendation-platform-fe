@@ -51,7 +51,7 @@ export function MediaCarousel({
       emblaApi.off("select", onSelect);
       emblaApi.off("reInit", onSelect);
     };
-  }, [emblaApi]);
+  }, [emblaApi, onSelect]);
 
   const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
   const scrollNext = () => emblaApi && emblaApi.scrollNext();

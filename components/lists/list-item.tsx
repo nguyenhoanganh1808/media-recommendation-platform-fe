@@ -40,7 +40,7 @@ export function ListItemCard({
 }: ListItemCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [notes, setNotes] = useState(item.notes || "");
-  const [isDeleting, setIsDeleting] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
   // Get media type badge color
@@ -61,7 +61,7 @@ export function ListItemCard({
   const releaseYear = new Date(item.media.releaseDate).getFullYear();
 
   const handleDelete = async () => {
-    setIsDeleting(true);
+    // setIsDeleting(true);
     try {
       await dispatch(
         removeFromList({ listId: item.listId, itemId: item.id })
@@ -75,7 +75,7 @@ export function ListItemCard({
           error instanceof Error ? error.message : "Failed to remove item",
       });
     } finally {
-      setIsDeleting(false);
+      // setIsDeleting(false);
     }
   };
 

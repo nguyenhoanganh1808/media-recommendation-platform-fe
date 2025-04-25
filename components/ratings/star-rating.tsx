@@ -55,9 +55,6 @@ export function StarRating({
       // If clicking the same rating, do nothing
       if (userRating?.rating === rating) return;
 
-      // Optimistic update
-      const previousRating = userRating?.rating || null;
-
       // Dispatch the action
       await dispatch(submitUserRating({ mediaId, rating: rating })).unwrap();
 

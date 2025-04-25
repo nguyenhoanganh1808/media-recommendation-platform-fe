@@ -2,12 +2,13 @@
 import { apiClient } from "./apiClient";
 import { setupApiInterceptors } from "./setupApiInterceptors";
 import { refreshAuthToken } from "./auth";
+import { AppStore } from "../store";
 
 // Export the basic client at this point
 export const api = apiClient;
 
 // Function to initialize interceptors with store
-export const initializeApi = (store: any) => {
+export const initializeApi = (store: AppStore) => {
   setupApiInterceptors(
     apiClient,
     store.getState,

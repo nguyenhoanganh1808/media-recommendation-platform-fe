@@ -1,12 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  followUser,
-  unfollowUser,
-  selectFollowStatus,
-} from "@/lib/features/users/userSlice";
+import { useDispatch } from "react-redux";
+import { followUser, unfollowUser } from "@/lib/features/users/userSlice";
 import { Button } from "@/components/ui/button";
 import { Loader2, UserPlus, UserMinus } from "lucide-react";
 import type { AppDispatch } from "@/lib/store";
@@ -34,7 +30,6 @@ export function FollowButton({
   className,
 }: FollowButtonProps) {
   const dispatch = useDispatch<AppDispatch>();
-  const followStatus = useSelector(selectFollowStatus);
 
   // Local state to handle optimistic UI updates
   const [following, setFollowing] = useState(isFollowing);

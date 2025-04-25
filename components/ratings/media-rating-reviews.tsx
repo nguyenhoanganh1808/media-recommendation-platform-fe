@@ -93,7 +93,7 @@ export function MediaRatingReviews({
               <StarRating
                 mediaId={mediaId}
                 size="lg"
-                onRatingChange={(rating) => {
+                onRatingChange={() => {
                   // if (rating && !activeTab.includes("review")) {
                   //   setActiveTab("review");
                   // }
