@@ -14,7 +14,8 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
 export function RegisterForm() {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -27,7 +28,14 @@ export function RegisterForm() {
     e.preventDefault();
 
     // Basic validation
-    if (!name || !email || !password || !confirmPassword || !username) {
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !password ||
+      !confirmPassword ||
+      !username
+    ) {
       toast.error("Error", {
         description: "Please fill in all fields",
       });
@@ -51,7 +59,13 @@ export function RegisterForm() {
     setIsLoading(true);
 
     try {
-      const { data } = await registerUser({ name, email, password, username });
+      const { data } = await registerUser({
+        firstName,
+        lastName,
+        email,
+        password,
+        username,
+      });
 
       // Store tokens and user data in Redux
       dispatch(
@@ -83,12 +97,22 @@ export function RegisterForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="firstName">First Name</Label>
         <Input
-          id="name"
-          placeholder="John Doe"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          id="firstName"
+          placeholder="John"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="lastName">Last Name</Label>
+        <Input
+          id="lastName"
+          placeholder="Doe"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           required
         />
       </div>
